@@ -22,13 +22,14 @@ export default function Index() {
 
     setTimeout(() => {
       toast({
-        title: "Заявка отправлена!",
+        title: "Заявка отправлена",
         description: "Мы свяжемся с вами в ближайшее время.",
       });
       setFormData({ name: "", phone: "", email: "", message: "" });
       setIsSubmitting(false);
     }, 1000);
   };
+
   const services = [
     {
       icon: "Calendar",
@@ -87,13 +88,13 @@ export default function Index() {
     {
       name: "Анна Петрова",
       role: "Директор по маркетингу",
-      text: "Невероятный уровень сервиса! Наше корпоративное мероприятие прошло безупречно.",
+      text: "Невероятный уровень сервиса. Наше корпоративное мероприятие прошло безупречно.",
       rating: 5
     },
     {
       name: "Михаил Соколов",
       role: "Основатель стартапа",
-      text: "Профессионализм на каждом этапе. Концепция превзошла все ожидания!",
+      text: "Профессионализм на каждом этапе. Концепция превзошла все ожидания.",
       rating: 5
     },
     {
@@ -111,50 +112,56 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <section className="container mx-auto px-4 py-16 md:py-24 text-center animate-fade-in">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#2D3748] mb-6 tracking-tight">
+    <div className="min-h-screen bg-[#F5F1EB]">
+      <section className="container mx-auto px-4 py-20 md:py-32 text-center animate-fade-in">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6 inline-block border-b border-chocolate/20 pb-2">
+            <span className="text-sm uppercase tracking-[0.3em] text-chocolate/60">Since 2014</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-serif font-light text-charcoal mb-8 tracking-tight leading-tight">
             Создаем события,<br />которые запоминаются
           </h1>
-          <p className="text-lg md:text-xl text-[#718096] mb-4 leading-relaxed">
+          <p className="text-xl md:text-2xl text-stone mb-6 leading-relaxed font-light">
             Более 10 лет опыта в event-индустрии
           </p>
-          <div className="flex flex-wrap gap-4 justify-center mb-8 text-sm md:text-base">
+          <div className="flex flex-wrap gap-6 justify-center mb-10 text-base">
             <div className="flex items-center gap-2">
-              <Icon name="Award" size={20} className="text-[#E53E3E]" />
-              <span className="text-[#2D3748]">Индивидуальные концепции</span>
+              <div className="w-1 h-1 bg-chocolate rounded-full"></div>
+              <span className="text-chocolate font-light">Индивидуальные концепции</span>
             </div>
             <div className="flex items-center gap-2">
-              <Icon name="Star" size={20} className="text-[#E53E3E]" />
-              <span className="text-[#2D3748]">Премиальный сервис</span>
+              <div className="w-1 h-1 bg-chocolate rounded-full"></div>
+              <span className="text-chocolate font-light">Премиальный сервис</span>
             </div>
             <div className="flex items-center gap-2">
-              <Icon name="Target" size={20} className="text-[#E53E3E]" />
-              <span className="text-[#2D3748]">Большой опыт</span>
+              <div className="w-1 h-1 bg-chocolate rounded-full"></div>
+              <span className="text-chocolate font-light">Большой опыт</span>
             </div>
           </div>
-          <Button size="lg" className="bg-[#E53E3E] hover:bg-[#C53030] text-white px-8 py-6 text-lg rounded-lg">
+          <Button 
+            size="lg" 
+            className="bg-chocolate hover:bg-chocolate/90 text-cashmere px-10 py-6 text-base tracking-wide uppercase font-light border-0 rounded-none"
+          >
             Обсудить проект
           </Button>
         </div>
       </section>
 
-      <section id="services" className="bg-[#F7FAFC] py-16 md:py-20">
+      <section id="services" className="bg-white py-20 md:py-28 border-t border-cashmere/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-serif font-light text-charcoal text-center mb-16 tracking-tight">
             Услуги
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {services.map((service, index) => (
-              <Card key={index} className="p-8 hover:shadow-lg transition-all duration-300 animate-scale-in border-0">
-                <div className="mb-4">
-                  <Icon name={service.icon} size={40} className="text-[#E53E3E]" />
+              <Card key={index} className="p-10 hover:shadow-xl transition-all duration-500 animate-scale-in border border-cashmere/30 bg-white rounded-none">
+                <div className="mb-6 pb-6 border-b border-cashmere/30">
+                  <Icon name={service.icon} size={36} className="text-chocolate" strokeWidth={1} />
                 </div>
-                <h3 className="text-xl font-bold text-[#2D3748] mb-3">
+                <h3 className="text-2xl font-serif font-light text-charcoal mb-4 tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-[#718096] leading-relaxed">
+                <p className="text-stone leading-relaxed font-light">
                   {service.description}
                 </p>
               </Card>
@@ -163,49 +170,49 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="packages" className="py-16 md:py-20">
+      <section id="packages" className="py-20 md:py-28 bg-[#F5F1EB]">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-serif font-light text-charcoal text-center mb-16 tracking-tight">
             Пакеты услуг
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {packages.map((pkg, index) => (
               <Card 
                 key={index} 
-                className={`p-8 transition-all duration-300 ${
+                className={`p-10 transition-all duration-500 rounded-none ${
                   pkg.highlighted 
-                    ? 'border-2 border-[#E53E3E] shadow-xl scale-105' 
-                    : 'border-0 hover:shadow-lg'
+                    ? 'border-2 border-chocolate shadow-2xl bg-white' 
+                    : 'border border-cashmere/30 hover:shadow-lg bg-white'
                 }`}
               >
                 {pkg.highlighted && (
-                  <div className="bg-[#E53E3E] text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-4">
+                  <div className="bg-chocolate text-cashmere text-xs font-light tracking-widest px-4 py-2 inline-block mb-6 uppercase">
                     Популярный
                   </div>
                 )}
-                <h3 className="text-2xl font-bold text-[#2D3748] mb-2">
+                <h3 className="text-3xl font-serif font-light text-charcoal mb-3 tracking-tight">
                   {pkg.name}
                 </h3>
-                <p className="text-3xl font-bold text-[#E53E3E] mb-6">
+                <p className="text-3xl font-light text-chocolate mb-8 tracking-tight">
                   {pkg.price}
                 </p>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-4 mb-10">
                   {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-[#718096]">
-                      <Icon name="Check" size={20} className="text-[#E53E3E] flex-shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-3 text-stone font-light">
+                      <div className="w-1.5 h-1.5 bg-chocolate rounded-full flex-shrink-0 mt-2"></div>
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Button 
                   variant={pkg.highlighted ? "default" : "outline"}
-                  className={`w-full ${
+                  className={`w-full rounded-none uppercase tracking-widest text-sm font-light ${
                     pkg.highlighted 
-                      ? 'bg-[#E53E3E] hover:bg-[#C53030] text-white' 
-                      : 'border-[#E53E3E] text-[#E53E3E] hover:bg-[#FFF5F5]'
+                      ? 'bg-chocolate hover:bg-chocolate/90 text-cashmere border-0' 
+                      : 'border-chocolate text-chocolate hover:bg-chocolate hover:text-cashmere'
                   }`}
                 >
-                  Выбрать пакет
+                  Выбрать
                 </Button>
               </Card>
             ))}
@@ -213,25 +220,25 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="testimonials" className="bg-[#F7FAFC] py-16 md:py-20">
+      <section id="testimonials" className="bg-white py-20 md:py-28 border-t border-b border-cashmere/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-12">
-            Отзывы клиентов
+          <h2 className="text-4xl md:text-5xl font-serif font-light text-charcoal text-center mb-16 tracking-tight">
+            Отзывы
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-8 border-0">
-                <div className="flex gap-1 mb-4">
+              <Card key={index} className="p-10 border border-cashmere/30 rounded-none bg-white">
+                <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Icon key={i} name="Star" size={20} className="text-[#E53E3E] fill-[#E53E3E]" />
+                    <div key={i} className="w-1 h-1 bg-chocolate rounded-full"></div>
                   ))}
                 </div>
-                <p className="text-[#2D3748] mb-6 leading-relaxed italic">
+                <p className="text-charcoal mb-8 leading-relaxed italic font-light text-lg">
                   "{testimonial.text}"
                 </p>
-                <div>
-                  <p className="font-bold text-[#2D3748]">{testimonial.name}</p>
-                  <p className="text-sm text-[#718096]">{testimonial.role}</p>
+                <div className="pt-6 border-t border-cashmere/30">
+                  <p className="font-serif text-charcoal tracking-tight">{testimonial.name}</p>
+                  <p className="text-sm text-stone font-light mt-1">{testimonial.role}</p>
                 </div>
               </Card>
             ))}
@@ -239,21 +246,21 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="portfolio" className="py-16 md:py-20">
+      <section id="portfolio" className="py-20 md:py-28 bg-[#F5F1EB]">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-serif font-light text-charcoal text-center mb-16 tracking-tight">
             Портфолио
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {portfolio.map((image, index) => (
               <div 
                 key={index} 
-                className="aspect-square rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer"
+                className="aspect-square overflow-hidden hover:opacity-90 transition-opacity duration-500 cursor-pointer border border-cashmere/30"
               >
                 <img 
                   src={image} 
                   alt={`Проект ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
             ))}
@@ -261,20 +268,20 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="py-16 md:py-20">
+      <section id="contact" className="py-20 md:py-28 bg-white border-t border-cashmere/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-charcoal text-center mb-6 tracking-tight">
               Готовы создать незабываемое событие?
             </h2>
-            <p className="text-lg text-[#718096] mb-12 text-center">
+            <p className="text-lg text-stone mb-16 text-center font-light">
               Заполните форму, и мы свяжемся с вами в ближайшее время
             </p>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="p-8 border-0">
-                <h3 className="text-2xl font-bold text-[#2D3748] mb-6">Оставьте заявку</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-12">
+              <Card className="p-10 border border-cashmere/30 rounded-none">
+                <h3 className="text-2xl font-serif font-light text-charcoal mb-8 tracking-tight">Оставьте заявку</h3>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <Input 
                       type="text"
@@ -282,7 +289,7 @@ export default function Index() {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       required
-                      className="border-gray-300"
+                      className="border-cashmere/40 rounded-none font-light focus:border-chocolate"
                     />
                   </div>
                   <div>
@@ -292,7 +299,7 @@ export default function Index() {
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       required
-                      className="border-gray-300"
+                      className="border-cashmere/40 rounded-none font-light focus:border-chocolate"
                     />
                   </div>
                   <div>
@@ -302,7 +309,7 @@ export default function Index() {
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       required
-                      className="border-gray-300"
+                      className="border-cashmere/40 rounded-none font-light focus:border-chocolate"
                     />
                   </div>
                   <div>
@@ -312,12 +319,12 @@ export default function Index() {
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       required
                       rows={4}
-                      className="border-gray-300"
+                      className="border-cashmere/40 rounded-none font-light focus:border-chocolate resize-none"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-[#E53E3E] hover:bg-[#C53030] text-white"
+                    className="w-full bg-chocolate hover:bg-chocolate/90 text-cashmere rounded-none uppercase tracking-widest text-sm font-light border-0"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Отправка..." : "Отправить заявку"}
@@ -326,57 +333,57 @@ export default function Index() {
               </Card>
 
               <div className="space-y-6">
-                <Card className="p-6 border-0">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#E53E3E] p-3 rounded-lg">
-                      <Icon name="Phone" size={24} className="text-white" />
+                <Card className="p-8 border border-cashmere/30 rounded-none">
+                  <div className="flex items-start gap-5">
+                    <div className="bg-cashmere/30 p-4 rounded-none">
+                      <Icon name="Phone" size={24} className="text-chocolate" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#2D3748] mb-1">Телефон</h4>
-                      <a href="tel:+79001234567" className="text-[#718096] hover:text-[#E53E3E] transition-colors">
+                      <h4 className="font-serif text-charcoal mb-2 tracking-tight">Телефон</h4>
+                      <a href="tel:+79001234567" className="text-stone hover:text-chocolate transition-colors font-light">
                         +7 (900) 123-45-67
                       </a>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-6 border-0">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#E53E3E] p-3 rounded-lg">
-                      <Icon name="Mail" size={24} className="text-white" />
+                <Card className="p-8 border border-cashmere/30 rounded-none">
+                  <div className="flex items-start gap-5">
+                    <div className="bg-cashmere/30 p-4 rounded-none">
+                      <Icon name="Mail" size={24} className="text-chocolate" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#2D3748] mb-1">Email</h4>
-                      <a href="mailto:info@events.ru" className="text-[#718096] hover:text-[#E53E3E] transition-colors">
+                      <h4 className="font-serif text-charcoal mb-2 tracking-tight">Email</h4>
+                      <a href="mailto:info@events.ru" className="text-stone hover:text-chocolate transition-colors font-light">
                         info@events.ru
                       </a>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-6 border-0">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#E53E3E] p-3 rounded-lg">
-                      <Icon name="MapPin" size={24} className="text-white" />
+                <Card className="p-8 border border-cashmere/30 rounded-none">
+                  <div className="flex items-start gap-5">
+                    <div className="bg-cashmere/30 p-4 rounded-none">
+                      <Icon name="MapPin" size={24} className="text-chocolate" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#2D3748] mb-1">Офис</h4>
-                      <p className="text-[#718096]">
+                      <h4 className="font-serif text-charcoal mb-2 tracking-tight">Офис</h4>
+                      <p className="text-stone font-light">
                         г. Москва, ул. Примерная, д. 1
                       </p>
                     </div>
                   </div>
                 </Card>
 
-                <div className="flex gap-3">
-                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
-                    <Icon name="Instagram" size={20} />
+                <div className="flex gap-3 pt-4">
+                  <Button variant="outline" size="icon" className="rounded-none border-chocolate text-chocolate hover:bg-chocolate hover:text-cashmere">
+                    <Icon name="Instagram" size={20} strokeWidth={1.5} />
                   </Button>
-                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
-                    <Icon name="Send" size={20} />
+                  <Button variant="outline" size="icon" className="rounded-none border-chocolate text-chocolate hover:bg-chocolate hover:text-cashmere">
+                    <Icon name="Send" size={20} strokeWidth={1.5} />
                   </Button>
-                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
-                    <Icon name="Facebook" size={20} />
+                  <Button variant="outline" size="icon" className="rounded-none border-chocolate text-chocolate hover:bg-chocolate hover:text-cashmere">
+                    <Icon name="Facebook" size={20} strokeWidth={1.5} />
                   </Button>
                 </div>
               </div>
@@ -385,9 +392,9 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-[#1A202C] text-gray-400 py-8">
+      <footer className="bg-charcoal text-cashmere/70 py-10 border-t border-cashmere/10">
         <div className="container mx-auto px-4 text-center">
-          <p>© 2024 Event Organizer. Все права защищены.</p>
+          <p className="font-light text-sm tracking-wider">© 2024 Event Organizer. Все права защищены.</p>
         </div>
       </footer>
     </div>

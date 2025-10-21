@@ -68,8 +68,15 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			colors: {
+				cashmere: '#D4C5B0',
+				chocolate: '#5C4033',
+				charcoal: '#1A1A1A',
+				stone: '#707070'
+			},
 			fontFamily: {
-				sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+				sans: ['Cormorant', 'Georgia', 'serif'],
+				serif: ['Playfair Display', 'Georgia', 'serif']
 			},
 			keyframes: {
 				'accordion-down': {
