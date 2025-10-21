@@ -1,8 +1,34 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Index() {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время.",
+      });
+      setFormData({ name: "", phone: "", email: "", message: "" });
+      setIsSubmitting(false);
+    }, 1000);
+  };
   const services = [
     {
       icon: "Calendar",
@@ -235,34 +261,126 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="bg-[#2D3748] text-white py-16 md:py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Готовы создать незабываемое событие?
-          </h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Свяжитесь с нами для обсуждения вашего проекта
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <a href="tel:+79001234567" className="flex items-center gap-2 text-lg hover:text-[#E53E3E] transition-colors">
-              <Icon name="Phone" size={24} />
-              <span>+7 (900) 123-45-67</span>
-            </a>
-            <a href="mailto:info@events.ru" className="flex items-center gap-2 text-lg hover:text-[#E53E3E] transition-colors">
-              <Icon name="Mail" size={24} />
-              <span>info@events.ru</span>
-            </a>
-          </div>
-          <div className="flex gap-4 justify-center">
-            <Button variant="outline" size="icon" className="rounded-full border-white text-white hover:bg-white hover:text-[#2D3748]">
-              <Icon name="Instagram" size={24} />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full border-white text-white hover:bg-white hover:text-[#2D3748]">
-              <Icon name="Send" size={24} />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full border-white text-white hover:bg-white hover:text-[#2D3748]">
-              <Icon name="Facebook" size={24} />
-            </Button>
+      <section id="contact" className="py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] text-center mb-4">
+              Готовы создать незабываемое событие?
+            </h2>
+            <p className="text-lg text-[#718096] mb-12 text-center">
+              Заполните форму, и мы свяжемся с вами в ближайшее время
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="p-8 border-0">
+                <h3 className="text-2xl font-bold text-[#2D3748] mb-6">Оставьте заявку</h3>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Input 
+                      type="text"
+                      placeholder="Ваше имя"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      required
+                      className="border-gray-300"
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      type="tel"
+                      placeholder="Телефон"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      required
+                      className="border-gray-300"
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      type="email"
+                      placeholder="Email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      required
+                      className="border-gray-300"
+                    />
+                  </div>
+                  <div>
+                    <Textarea 
+                      placeholder="Расскажите о вашем мероприятии"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      required
+                      rows={4}
+                      className="border-gray-300"
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-[#E53E3E] hover:bg-[#C53030] text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                  </Button>
+                </form>
+              </Card>
+
+              <div className="space-y-6">
+                <Card className="p-6 border-0">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#E53E3E] p-3 rounded-lg">
+                      <Icon name="Phone" size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2D3748] mb-1">Телефон</h4>
+                      <a href="tel:+79001234567" className="text-[#718096] hover:text-[#E53E3E] transition-colors">
+                        +7 (900) 123-45-67
+                      </a>
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 border-0">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#E53E3E] p-3 rounded-lg">
+                      <Icon name="Mail" size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2D3748] mb-1">Email</h4>
+                      <a href="mailto:info@events.ru" className="text-[#718096] hover:text-[#E53E3E] transition-colors">
+                        info@events.ru
+                      </a>
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 border-0">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#E53E3E] p-3 rounded-lg">
+                      <Icon name="MapPin" size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2D3748] mb-1">Офис</h4>
+                      <p className="text-[#718096]">
+                        г. Москва, ул. Примерная, д. 1
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+
+                <div className="flex gap-3">
+                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
+                    <Icon name="Instagram" size={20} />
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
+                    <Icon name="Send" size={20} />
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full border-[#E53E3E] text-[#E53E3E] hover:bg-[#E53E3E] hover:text-white">
+                    <Icon name="Facebook" size={20} />
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
